@@ -200,15 +200,15 @@ class Application(ctk.CTk):
 
     def show_system_info(self):
         system_info_window = SystemInfoWindow(self)
-        system_info_window.grab_set()  # Ensure the new window is modal
+        system_info_window.grab_set()
 
     def show_logs(self):
         log_window = LogWindow(self)
-        log_window.grab_set()  # Ensure the new window is modal
+        log_window.grab_set()
 
     def show_video_editor(self):
         video_editor_window = VideoEditorWindow(self)
-        video_editor_window.grab_set()  # Ensure the new window is modal
+        video_editor_window.grab_set()
 
 if __name__ == "__main__":
         ctk.set_appearance_mode("light")

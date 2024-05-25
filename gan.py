@@ -41,13 +41,13 @@ class GAN:
             vidr.close()
         else:
             raise FileNotFoundError(
-                "I need a link to a video file (mp4, mov, avi, MP4, MOV, AVI)"
+                "Мне нужна ссылка на видеофайл (mp4, mov, avi, MP4, MOV,))"
             )
 
         if len(img_list) == 0:
             raise FileNotFoundError(
-                "Input video not found...\n"
-                "I need a link to a video file (mp4, mov, avi, MP4, MOV, AVI)"
+                "Входное видео не найдено...\n"
+                "Мне нужна ссылка на видеофайл (mp4, mov, avi, MP4, MOV,))"
             )
 
         return video, img_list
@@ -108,7 +108,7 @@ class GAN:
 
             if bg_img is not None:
                 save_restore_path = os.path.join(self.result_root, video['name'])
-                os.makedirs(save_restore_path, exist_ok=True)  # Ensure directory exists
+                os.makedirs(save_restore_path, exist_ok=True)  # каталог существует или нет
                 imwrite(bg_img, os.path.join(save_restore_path, f"{basename}.png"))
 
             if self.progress_callback:
@@ -121,18 +121,18 @@ class GAN:
                             sorted(os.listdir(save_restore_path)) if frame.endswith('.png')]
 
             if not os.path.exists(save_restore_path):
-                os.makedirs(save_restore_path, exist_ok=True)  # Ensure directory exists
+                os.makedirs(save_restore_path, exist_ok=True)  # Убедитесь, что каталог существует
 
-            # Define video writer object
-            fourcc = cv2.VideoWriter_fourcc(*'XVID')  # Codec for MP4
+            # Определяем объект для записи видео
+            fourcc = cv2.VideoWriter_fourcc(*'XVID') # Кодек для MP4
             frame_width, frame_height = video_frames[0].shape[1], video_frames[0].shape[0]
             vidwriter = cv2.VideoWriter(f'{save_restore_path}.mp4', fourcc, video['fps'], (frame_width, frame_height))
 
-            # Write frames to video
+            # Запись кадров в видео
             for frame in video_frames:
                 vidwriter.write(frame)
 
-            # Release video writer
+            # Выпуск видео для записи
             vidwriter.release()
 
             logger.info(f"Saved processed video to: {save_restore_path}.mp4")

@@ -14,7 +14,7 @@ import tkinter as tk
 
 class SystemInfoWindow(tk.Toplevel):
     def __init__(self, parent):
-        super().__init__(parent)  # Call the __init__ method of the parent class
+        super().__init__(parent)
         self.parent = parent
         self.title("Информация о конфигурации системы")
         self.geometry("700x600")
